@@ -1,6 +1,6 @@
 class Project < ActiveRecord::Base
   attr_accessible :name, :path, :scripts, :timeout, :token,
-    :default_ref, :gitlab_url, :always_build, :polling_interval, :public
+    :default_ref, :gitlab_url, :always_build, :polling_interval, :public, :gemfile_path
 
   has_many :builds, dependent: :destroy
 
@@ -149,13 +149,15 @@ end
 #
 # Table name: projects
 #
-#  id          :integer(4)      not null, primary key
-#  name        :string(255)     not null
-#  path        :string(255)     not null
-#  timeout     :integer(4)      default(1800), not null
-#  scripts     :text            default(""), not null
-#  created_at  :datetime        not null
-#  updated_at  :datetime        not null
-#  token       :string(255)
-#  default_ref :string(255)
+#  id            :integer(4)      not null, primary key
+#  name          :string(255)     not null
+#  path          :string(255)     not null
+#  timeout       :integer(4)      default(1800), not null
+#  scripts       :text            default(""), not null
+#  created_at    :datetime        not null
+#  updated_at    :datetime        not null
+#  token         :string(255)
+#  default_ref   :string(255)
+#  gitlab_url    :string(255)
+#  gemfile_path  :string(255)
 #

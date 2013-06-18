@@ -46,6 +46,9 @@
           = f.label :timeout, 'Timeout (in seconds) per command'
           = f.number_field :timeout, class: 'input-xlarge'
         .field
+          = f.label :gemfile_path, 'Set an alternate Gemfile path'
+          = f.text_field :gemfile_path, class: 'input-xlarge', placeholder: '/home/projects/some_project/alternate_gemfile_path/Gemfile'
+        .field
           = f.label :scripts
           = f.text_area :scripts, class: 'input-xxlarge', rows: 11, placeholder: "bundle exec rake spec"
 

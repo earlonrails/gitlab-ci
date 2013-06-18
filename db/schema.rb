@@ -11,16 +11,16 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130129121754) do
+ActiveRecord::Schema.define(:version => 20130618000540) do
 
   create_table "builds", :force => true do |t|
     t.integer  "project_id"
     t.string   "ref"
     t.string   "status"
     t.datetime "finished_at"
-    t.text     "trace"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.text     "trace",       :limit => 2147483647
+    t.datetime "created_at",                        :null => false
+    t.datetime "updated_at",                        :null => false
     t.string   "sha"
     t.datetime "started_at"
     t.string   "tmp_file"
@@ -40,6 +40,7 @@ ActiveRecord::Schema.define(:version => 20130129121754) do
     t.boolean  "always_build",     :default => false, :null => false
     t.integer  "polling_interval"
     t.boolean  "public",           :default => false, :null => false
+    t.string   "gemfile_path"
   end
 
   create_table "users", :force => true do |t|
