@@ -9,7 +9,12 @@ class ProjectsController < ApplicationController
   def index
     @projects = Project.order('name ASC')
     @projects = @projects.public unless current_user
-    @projects  = @projects.page(params[:page]).per(20)
+
+    respond_to do |format|
+      format.html { @projects  = @projects.page(params[:page]).per(20) }
+      format.json { render :json => @projects.to_json }
+      format.xml { render :xml => @projects.to_xml }
+    end
   end
 
   def show
@@ -106,7 +111,6 @@ class ProjectsController < ApplicationController
       format.xml { render :xml => build_status.to_xml }
       format.png { send_file Rails.root.join('public', image_name), filename: image_name, disposition: 'inline' }
     end
-
   end
 
   def charts
